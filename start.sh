@@ -1,5 +1,10 @@
 #!/bin/bash
-chmod +x apache-tomcat-9.0.112/bin/catalina.sh
-export JAVA_HOME=$JAVA_HOME
-export PATH=$JAVA_HOME/bin:$PATH
-apache-tomcat-9.0.112/bin/catalina.sh run
+
+# Descomprimir WAR si es necesario
+mkdir -p /app/tomcat/webapps
+cp target/PaeRailway.war /app/tomcat/webapps/ROOT.war
+
+# Iniciar Tomcat
+cd apache-tomcat-9.0.112/bin
+chmod +x *.sh
+./catalina.sh run
